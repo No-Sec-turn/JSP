@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax('string2.jsp',{
+			data:{id:'kim',
+				 pass:'p123'
+			},
+			success:function(rdata){
+				$('body').append(rdata);
+			}
+		});
+		
+		// btn버튼을 클릭했을때  string1.jsp  id,pass 파라미터 넘겨서
+		// 출력결과를 받아서 table태그에  append() 출력
+		$('#btn').click(function(){
+			$.ajax('string2.jsp',{
+				data:{id:'kim',
+					 pass:'p123'},
+				success:function(rdata){
+					$('table').append("<tr><td>"+rdata+"</td></tr>");
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<h1>js_jQuery2/string2.html</h1>
+<table border="1">
+<tr><td>아이디,비밀번호</td></tr>
+</table>
+<input type="button" value="가져오기" id="btn">
+</body>
+</html>
+
