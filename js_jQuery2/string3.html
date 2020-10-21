@@ -6,32 +6,49 @@
 <script src="../js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		// btn click() 이벤트 발생하면
-		// id,pass 들고  string2.jsp이동  
-		// 아이디,비밀번호 출력 결과 가져오기
-		$('#btn').click(function(){
-			$.ajax('string2.jsp',{
-				data:{id:$('#id').val(),
-					  pass:$('#pass').val()},
-				success:function(rdata){
-					$('table').append("<tr><td>"+rdata+"</td></tr>");
-				}
-			});
-		});
+		//submit() 이벤트  발생하면
+		// id,pass  들고 string3.jsp 이동
+		// 아이디, 비밀번호 출력값 가져오기
+// 		$('#btn').click(function(){
+// 			$.ajax('string2.jsp',{
+// 				data:{id:$('#id').val(),
+// 					pass: $('#pass').val()},
+// 					success:function(rdata){
+// 						$('table').append("<tr><td>"+rdata+"</td></tr>");
+// 					}
+					
+				
+// 			});
+// 		}); //#btn 클릭 함수 구문 끝zz
 		
-		// idbtn 버튼 클릭했을때  id 가지고 string3.jsp 가서
-		// id와 'kim' 같으면  '아이디 중복' 출력 ,틀리면 '아이디사용가능' 출력
-		// 출력 결과를 가져와서  id="re"태그에  html() 넣기
+		
+		//idbtn 버튼 클릭했을때 id 가지고 string3.jsp 가서
+		// id와 'kim' 같으면  '아이디 중복' 출력, 틀리면 "아이디 사용가능"
+		// 출력 결과를 가져와서 id="re" 태그에 html() 넣기
+		
 		$('#idbtn').click(function(){
 			$.ajax('string3.jsp',{
+				
 				data:{id:$('#id').val()},
 				success:function(rdata){
 					$('#re').html(rdata);
 				}
 			});
-		});
+			
+		}); //#idbtn 클릭 함수 구문 끝
+	
+//----------------------------------------------
+	// class="dup" 버튼을 클릭했을 때
+	//  id="myid"아이디 val() 가지고  dupCheck2.jsp
+	// 디비 연결 아이디중복, 아이디 사용가능 출력
+	// 출력결과를 받아서
+	
+	
+	
+	
+		
 	});
-</script>	
+</script>
 </head>
 <body>
 <h1>js_jQuery2/string3.html</h1>
@@ -39,12 +56,15 @@
 <tr><td>아이디,비밀번호</td></tr>
 </table>
 <form action="a.jsp" method="post" id="myform">
-아이디:<input type="text" name="id" id="id">
-<input type="button" value="아이디중복체크" id="idbtn"><br>
+아이디: <input type="text" name="id" id="id">
+<input type="button" value="아이디중복체크" id="idbtn"><br><br>
 <div id="re"></div><br>
-비밀번호:<input type="password" name="pass" id="pass"><br>
+
+비밀번호: <input type="password" name="pass" id="pass"><br>
 <input type="button" value="로그인정보확인" id="btn">
+
 </form>
+
 </body>
 </html>
 
